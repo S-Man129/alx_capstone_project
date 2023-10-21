@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task manager</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Task Manager</title>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Task Manager</h1>
+        <div id="login-form">
+            <input type="text" id="username" placeholder="Username">
+            <button id="login-button">Login</button>
+        </div>
+    </div>
+    <div id="task-manager" class="hidden">
+        <div id="task-form">
+            <input type="text" id="task" placeholder="Add a new task">
+            <select id="category" name="category">
+                <option value="none">Category</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="study">Study</option>
+            </select>
+            <input type="date" id="due-date">
+            <select id="priority" name="priority">
+                <option value="none">Priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button id="add-task">Add Task</button>
+            <button id="logout-button">Logout</button>
+        </div>
+        <div id="filters">
+            <label for="category-filter">Category:</label>
+            <select id="category-filter" name="category-filter">
+                <option value="all">All</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="study">Study</option>
+            </select>
+            <label for="priority-filter">Priority:</label>
+            <select id="priority-filter" name="priority-filter">
+                <option value="all">All</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <label for="completed-filter">Completed:</label>
+            <input type="checkbox" id="completed-filter" class="completed-filter">
+        </div>
+        <ul id="task-list"></ul>
+    </div>
+    <script src="js/app.js"></script>
 </body>
 </html>
