@@ -1,26 +1,77 @@
-Capstone Project
-Portfolio project
+## ALX Capstone Project
 
 The Capstone Project is the culmination of my journey in the “Intro to Software Engineering” course, where I will apply my newly acquired skills in HTML, CSS, Python, MySQL, JavaScript, and Flask to build a practical and functional web application. This project serves as an opportunity for me to showcase my proficiency in software engineering principles and demonstrate my ability to create a complete web application from scratch.
 
 The purpose of the Capstone Project is to provide me with a real-world development experience, simulating the challenges and complexities that software developers often face in their professional careers. Throughout this project, I will showcase my problem-solving abilities, project management skills, and creativity in designing and implementing a fully functional web application.
 
-Task Manager Application
+## PROJECT OVERVIEW
+# Task Manager Application
+The "Task Manager App" is a software application designed to help users efficiently manage and organize their tasks and to-do lists. Its primary purpose is to streamline task management, improve productivity, and reduce the stress associated with keeping track of various tasks and responsibilities.
 
-Build a task manager application to help users organize and track their tasks.
+Key goals and features of the Task Manager App include:
 
-Required Tasks:
+1. Task Organization: Users can create, edit, categorize, and prioritize tasks. This feature allows users to keep track of their daily, weekly, and long-term responsibilities effectively.
 
-Design and implement a user interface for creating, editing, and deleting tasks using HTML and CSS.
+2. Deadline Tracking: The app provides the ability to set due dates and deadlines for tasks, ensuring that users never miss important dates or appointments.
 
-Use JavaScript to handle task management functionality, such as adding new tasks, marking tasks as complete, and deleting tasks.
+3. Reminders: Users can receive notifications and reminders for upcoming tasks, helping them stay on top of their to-do lists.
 
-Implement data storage for tasks using local storage or a simple backend technology like Flask.
+4. Collaboration: The app may also include collaborative features, enabling users to share tasks and projects with others, making it useful for both personal and team-oriented task management.
 
-Include features like task categorization, due dates, and priority levels.
+5. To-Do Lists: Users can create and maintain to-do lists, check off completed tasks, and view their progress at a glance.
 
-Implement search and filtering options to help users find specific tasks.
+6. Categories and Tags: The ability to categorize tasks and use tags makes it easier to sort and filter tasks based on projects, priority, or other criteria.
 
-Add the ability to set reminders or notifications for important tasks.
+7. User-Friendly Interface: The app will offer an intuitive and user-friendly interface to make task management as simple and efficient as possible.
 
-Ensure a responsive design to support different devices and screen sizes.
+8. Customization: Users can customize the app to match their workflow and preferences, including themes, layouts, and notifications.
+
+The primary problem this project aims to solve is the common challenge of managing multiple tasks and responsibilities, which can lead to stress, missed deadlines, and decreased productivity. The Task Manager App seeks to provide a centralized and efficient solution for users to organize, prioritize, and monitor their tasks effectively. By offering a user-friendly and customizable platform for task management, the app aims to enhance users' daily lives and overall productivity.
+
+## FEATURES AND FUNCTIONALITY
+The "Task Manager App" offers these main features:
+1. **Task Creation and Editing**
+2. **Task Organization**
+3. **Priority and Due Date Setting**
+4. **Reminders and Notifications**
+5. **To-Do Lists**
+6. **Collaboration Features**
+7. **Tags and Labels**
+8. **Customization**
+9. **Recurring Tasks**
+10. **Task Progress Tracking**
+11. **Data Sync and Backup**
+12. **Search and Filters**
+13. **Integration with Other Apps**
+
+Notable aspects:
+- **User-Friendly Interface**
+- **Customization**
+- **Collaboration**
+- **Cross-Platform Compatibility**
+- **Robust Reminder System**
+- **Data Security and Backup**
+
+These features make the app efficient, adaptable, and ideal for both personal and professional use.
+
+## TECHNOLOGY USED
+### Frontend
+HTML, CSS, JavaScript (ES6+)
+
+### Backend:
+Python: For server-side development using the Flask framework.
+
+Flask: A micro web framework for Python, used to build the backend API.
+
+SQLite: A lightweight and easy-to-setup relational database, suitable for smaller-scale applications.
+
+## DEMO
+
+## ROADMAP AND FUTURE ENHANCEMENTS:
+
+## CONTACT INFORMATION
+**Name: Sulayman Adebayo
+Contact: +2347057761403
+LinkedIn:
+Github
+Twitter:**
