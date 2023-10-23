@@ -75,3 +75,8 @@ Contact: +2347057761403
 LinkedIn:
 Github
 Twitter:**
+
+## WORKFLOW
+![alx capstone project- Task Manager Web Application workflow flowchart](https://github.com/S-Man129/alx_capstone_project/assets/33316848/01abe15e-13c4-49f4-87b1-c8111dcd67ce)
+
+## WIREFRAME
