@@ -17,6 +17,10 @@
     align-items: baseline;
   }
 
+  h1:hover {
+    cursor: pointer;
+  }
+
   .nav-header {
     width: 60%;
   }

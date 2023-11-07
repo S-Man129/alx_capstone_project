@@ -14,6 +14,10 @@ const userTasksKey = `tasks_${username}`;
 // Retrieve the user's tasks from local storage
 const userTask = JSON.parse(localStorage.getItem(userTasksKey)) || [];
 
+const projectName = document.querySelector('h1');
+projectName.addEventListener('click', function() {
+    window.location.replace("index.html");
+});
 
 const modal = document.querySelector('#addTaskModal');
 const addTaskBtn = document.querySelector('#addTaskButton');
@@ -112,6 +116,7 @@ const displayTasks = (card, index) => {
     const completeIcon = document.createElement('i')
     completeIcon.setAttribute('class', 'fa-regular fa-circle');
     completeIcon.setAttribute('id', 'completeTask');
+    completeIcon.setAttribute('title', 'Mark task as complete');
     taskHead.appendChild(completeIcon);
 
     completeIcon.addEventListener("click", function() {
@@ -130,10 +135,9 @@ const displayTasks = (card, index) => {
         }
     });
 
-    taskCard.appendChild(taskHead); // append task head to taskcard
+    taskCard.appendChild(taskHead); 
 
     const horizontalLine = document.createElement('hr');
-
     taskCard.appendChild(horizontalLine); // append horizontal rule to taskcard
 
     // Creating a task card body
@@ -143,14 +147,14 @@ const displayTasks = (card, index) => {
     const nameofTask = document.createElement('h3');
     nameofTask.setAttribute('id', 'taskName');
     taskcardBody.appendChild(nameofTask);
-    nameofTask.textContent = card.taskName; // display task name from form field
+    nameofTask.textContent = card.taskName;
 
     const taskDescription = document.createElement('p');
     taskDescription.setAttribute('id', 'taskDescription');
     taskcardBody.appendChild(taskDescription);
-    taskDescription.textContent = card.description; // display task description from form field
+    taskDescription.textContent = card.description;
 
-    taskCard.appendChild(taskcardBody); // append task body to taskcard
+    taskCard.appendChild(taskcardBody);
 
     //Creating a div element for task time
     const taskTimeDiv = document.createElement('div');

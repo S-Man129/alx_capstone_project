@@ -58,13 +58,6 @@ These features make the app efficient, adaptable, and ideal for both personal an
 ### Frontend
 HTML, CSS, JavaScript (ES6+)
 
-### Backend:
-Python: For server-side development using the Flask framework.
-
-Flask: A micro web framework for Python, used to build the backend API.
-
-SQLite: A lightweight and easy-to-setup relational database, suitable for smaller-scale applications.
-
 ## DEMO
 
 ## ROADMAP AND FUTURE ENHANCEMENTS:

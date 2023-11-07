@@ -50,6 +50,7 @@ function login() {
     }
 }
 
+
 function register() {
     const username = document.getElementById("registerUsername").value.trim();
     const email = document.getElementById("registerEmail").value;
@@ -75,6 +76,6 @@ function register() {
 function showDashboard() {
     
     setTimeout(function() {
-        window.location.replace("dashboard2.html");
+        window.location.replace("dashboard.html");
     }, 2000);
 }
