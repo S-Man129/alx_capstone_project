@@ -1,0 +1,543 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    background: #f1f1f1;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: white;
+    align-items: baseline;
+  }
+
+  .nav-header {
+    width: 60%;
+  }
+  .nav-header ul{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nav-header ul li {
+      float: right;
+  }
+
+  #notification-dot {
+    font-size: 100px;
+    padding: 1px 4px;
+    color: red;
+    border-radius: 50%;
+    position: relative;
+    top: -19px;
+    left: 45px;
+    border-radius: 50px;
+  }
+  
+  /* styleing the search bar */
+  /* input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+  }*/
+
+  p.username {
+    margin-bottom: 0px;
+  }
+  
+  /* side navigation bar */
+  .sidenav {
+    border: 1px solid #555;
+    margin-top: 20px;
+    background-color: #fff;
+  }
+
+  .sidenav h2{
+    text-align: center;
+  }
+
+  .sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #555;
+  }
+  
+  .sidenav li a {
+    display: block;
+    color: #000;
+    padding: 30px 16px;
+    text-decoration: none;
+  }
+  
+  .sidenav li {
+    text-align: center;
+    border-bottom: 1px solid #000;
+  }
+  
+  .sidenav li:last-child {
+    border-bottom: none;
+  }
+  
+  .sidenav li a.active {
+    background-color: #555;
+    color: white;
+    border-right: 5px solid #000;
+  }
+  
+  .sidenav li a:hover {
+    background-color: #555;
+    color: white;
+    border-right: 5px solid #000;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .rightcolumn {   
+    float: left;
+    width: 80%;
+  }
+  
+  /* Right column */
+  .leftcolumn {
+    float: left;
+    width: 20%;
+    background-color: #f1f1f1;
+    padding-right: 20px;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .form {
+    padding: 40px 50px;
+    background-color: #ffffff;
+    display: block;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    width: 60%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes zoom {
+      from {transform: scale(0.1)} 
+      to {transform: scale(1)}
+  }
+
+  .form h2 {
+      margin-bottom: 20px;
+      color: #333;
+  }
+
+  .form input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 15px;
+  }
+
+  .form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-bottom: 5px 0px 10px 0px;
+  }
+
+  #taskCategoryForm {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #1b1818;
+  }
+
+  textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      margin: 5px 0px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+  }
+
+  /* The Close Button */
+  .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+  }
+    
+  .close:hover,
+  .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  /* Add a card effect for articles */
+  .card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  /* Select option */
+  #taskCategory {
+    width: 200px;
+    max-width: 300px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+  }
+
+  #taskCategory:focus {
+    border: 1px solid #000;
+  }
+
+  /* Add task button */
+  button.add-task {
+    padding: 5px 10px;
+    background-color: #333 ;
+    border-style: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .add-task:hover, .add-task:focus, .fa-circle {
+      cursor: pointer;
+  }
+
+  button .fa-plus, button .fa-regular {
+    padding: 5px 7px 5px 0px;
+  }
+
+  /* Task Card styling*/
+
+  .taskCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 10px 0px;
+    
+  }
+
+  .taskCard {
+    flex: 25%;
+    max-width: 24.4%;
+    padding: 10px;
+    border: 2px solid orangered;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 5px 3px;
+  }
+
+  #taskcardCategoryName {
+    color: orangered;
+    font-weight: bold;
+  }
+
+  .taskcardHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .taskcardBody {
+    margin-bottom: 10px;
+    border-left: 5px solid orangered;
+    padding: 0px 10px;
+  }
+
+  #taskDescription {
+    height: 50px;
+    max-height: 50px;
+    overflow-y: scroll;
+    color: #555;
+  }
+
+  .taskcardBody h3 {
+    margin: 0px;
+  } 
+
+  #taskcardControl {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #333;
+  }
+
+  .taskcardTime, .taskcardDate, .taskcardEdit, .taskcardDelete {
+    padding: 7px 0px;
+  }
+
+  .taskcardTime, .taskcardDate {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .taskcardEdit:hover {
+    cursor: pointer;
+    border-bottom: 1px dotted #333;
+    color: #000;
+  }
+  
+  .taskcardDelete:hover {
+    cursor: pointer;
+    border-bottom: 1px dotted #333;
+    color: red;
+  }
+
+  li.createtask {
+    display: none;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .taskCard {
+      flex: 33%;
+      max-width: 32%;
+    }
+
+    .leftcolumn {
+      width: 20%;
+    }
+
+    .rightcolumn {
+      width: 80%;
+    }
+  }
+
+  /* End of task card styling */
+
+  .btn {
+    padding: 5px 10px;
+    border-style: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+  }
+  
+  /* Clear floats after the columns */
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 900px) {
+    .leftcolumn {
+      width: 15%;
+    }
+
+    .leftcolumn .fa {
+      font-size: 25px;
+    }
+
+    .taskCard {
+      flex: 50%;
+      max-width: 48%;
+    }
+    
+    .rightcolumn {
+      width: 85%;
+    }
+
+    .menu {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      top: 30px;
+      left: 100%;
+    }
+
+    .menu::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent black transparent transparent;
+    }
+
+    .sidenav li a {
+      position: relative;
+    }
+
+    .sidenav li a:hover .menu {
+      visibility: visible;
+    }
+
+  }
+
+  /* media sceen at 600px navbar is fixed down */
+  @media screen and (max-width: 640px) {
+    .rightcolumn {
+      width: 100%;
+    }
+
+    .taskCardContainer {
+      margin-bottom: 50px;
+    }
+    
+    .taskCard {
+      flex: 49%;
+      max-width: 48%;
+    }
+
+    li.createtask {
+      display: block;
+    }
+
+    .add-task {
+      display: none;
+    }
+
+    .leftcolumn {
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+      border: 0px;
+    }
+
+    .sidenav {
+      bottom: 0px;
+      border: none;
+    }
+
+    .sidenav h2 {
+      display: none;
+    }
+
+    .sidenav ul {
+      display: flex;
+      margin: 0px;
+      padding-right: 5px;
+      border: none;
+    }
+
+    .sidenav ul li{
+      flex-direction: row;
+      border: 0px;
+      width: 100%;
+    }
+
+    .sidenav ul li a{
+      display: block;
+      justify-content: space-around;
+      border: 1px solid #333;
+      margin: 0px;
+      padding: 10px 10px;
+    }
+
+    .sidenav li a:hover {
+      background-color: #555;
+      color: white;
+      border: none;
+    }
+
+    .menu {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      top: -60%;
+      left: 50%;
+      margin-left: -62px;
+    }
+
+    .menu::after {
+      content: "";
+      position: absolute;
+      top: 115%;
+      left: 50%;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent;
+    }
+
+    .sidenav li a {
+      position: relative;
+    }
+
+    .sidenav li a:hover .menu {
+      visibility: visible;
+    }
+
+  }
+
+  
+  /* Responsive layout - when the screen is less than 767px wide */
+  @media screen and (max-width: 400px) {
+    .taskCard {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }

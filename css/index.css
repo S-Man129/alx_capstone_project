@@ -1,0 +1,47 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-image: url(../images/bgimg.avif);
+    background-size: contain;
+    color: #fff;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content {
+    text-align: center;
+}
+
+h1 {
+    font-size: 5rem;
+    margin: 0PX;
+}
+
+p {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.get-started-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.get-started-button:hover {
+    background-color: #075ecf;
+    color: #fff;
+}
