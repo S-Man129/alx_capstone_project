@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Auth - TaskSwift</title>
+</head>
+
+<body>
+    <h1><i class="fa-solid fa-boxes-stacked"></i>TaskSwift</h1>
+    <span id="loginRegSuccess" style="visibility: hidden;"></span>
+    <div class="container">
+        <div class="form">
+            <div id="loginForm">
+                <h2>Login</h2>
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button id="loginButton" onclick="login()">Login</button>
+                <p id="loginMessage" class="message"></p>
+                <p>Don't have an account? <a href="#" onclick="showRegistrationForm()">Register here</a></p>
+            </div>
+
+            <div id="registrationForm" style="display: none;">
+                <h2>Register</h2>
+                <input type="text" id="registerUsername" placeholder="Username">
+                <input type="text" id="registerEmail" placeholder="Email">
+                <input type="password" id="registerPassword" placeholder="Password">
+                <button id="registerButton" onclick="register()">Register</button>
+                <p id="registerMessage" class="message"></p>
+                <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

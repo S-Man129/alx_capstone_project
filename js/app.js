@@ -1,113 +1,278 @@
-// Retrieve tasks from local storage (if available)
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+import { validateForm, getFieldsValue, reset, updateTask } from "./util.js";
 
-function addTask() {
-    const taskInput = document.getElementById('task');
-    const categorySelect = document.getElementById('category');
-    const dueDateInput = document.getElementById('due-date');
-    const prioritySelect = document.getElementById('priority');
+const username = localStorage.getItem("username");
+if (username) {
+    const user = username.charAt(0).toUpperCase() + username.slice(1);
+    document.querySelector('#username').innerText = user;
 
-    const taskText = taskInput.value.trim();
-    const category = categorySelect.value;
-    const dueDate = dueDateInput.value;
-    const priority = prioritySelect.value;
+    getUserTasks(username) 
+}
 
-    if (taskText) {
-        const newTask = {
-            text: taskText,
-            completed: false,
-            category,
-            dueDate,
-            priority,
-        };
+//Create a local storage key specific to the user
+const userTasksKey = `tasks_${username}`;
 
-        tasks.push(newTask);
-        updateLocalStorage();
+// Retrieve the user's tasks from local storage
+const userTask = JSON.parse(localStorage.getItem(userTasksKey)) || [];
 
-        taskInput.value = '';
-        categorySelect.value = 'none';
-        dueDateInput.value = '';
-        prioritySelect.value = 'none';
 
-        displayTasks();
+const modal = document.querySelector('#addTaskModal');
+const addTaskBtn = document.querySelector('#addTaskButton');
+const createTaskBtn = document.querySelector('#addTask1');
+
+createTaskBtn.onclick = function() {
+    const taskformHead = document.querySelector('.form h2');
+    taskformHead.innerText = 'Create new task';
+    modal.style.display = "block";
+    addTaskBtn.innerText = 'Add Task'
+}
+
+const createTaskBtn2 = document.querySelector('#addTask2');
+
+createTaskBtn2.onclick = function() {
+    const taskformHead = document.querySelector('.form h2');
+    taskformHead.innerText = 'Create new task';
+    modal.style.display = "block";
+    addTaskBtn.innerText = 'Add Task'
+}
+
+// close form 
+const close = document.getElementsByClassName("close")[0];
+close.onclick = function() {
+    modal.style.display = "none";
+}
+
+let currentPosition = -1;
+
+addTaskBtn.addEventListener('click', function() {
+    const isValidated = validateForm();
+
+    if (!isValidated){
+        return;
     }
-}
 
-function toggleTask(index) {
-    tasks[index].completed = !tasks[index].completed;
-    updateLocalStorage();
-    displayTasks();
-}
+    console.log('Task button is now working');
 
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    updateLocalStorage();
-    displayTasks();
-}
+    const formValues = getFieldsValue();
+    reset();
 
-function displayTasks(filteredTasks) {
-    const taskList = document.getElementById('task-list');
-    taskList.innerHTML = '';
+    const taskformHead = document.querySelector('.form h2');
 
-    const tasksToDisplay = filteredTasks || tasks;
+    if (currentPosition === -1) {
+        // If currentPosition is -1, it means we are creating a new task
+        userTasks.push(formValues);
+    } else {
+        // If currentPosition is set, it means we are updating an existing task
+        userTasks[currentPosition] = formValues;
+        currentPosition = -1; // Reset currentPosition after updating
+        taskformHead.innerText = 'Create new task';
+        addTaskBtn.innerText = 'Add Task';
+    }
 
-    tasksToDisplay.forEach((task, index) => {
-        const li = document.createElement('li');
-        li.className = task.completed ? 'completed' : '';
-        li.innerHTML = `
-            <span>${task.text}</span>
-            <span>Category: ${task.category}</span>
-            <span>Due Date: ${task.dueDate}</span>
-            <span>Priority: ${task.priority}</span>
-            <button onclick="toggleTask(${index})">Toggle</button>
-            <button onclick="deleteTask(${index})">Delete</button>
-        `;
-        taskList.appendChild(li);
+    updateLocalStorage(userTasks, username)
+
+    addTaskToContainer(userTasks);
+});
+
+const addTaskToContainer = (userTask) => {
+    const taskCardContainer = document.querySelector('.taskCardContainer');
+    taskCardContainer.innerHTML = '';
+    for (let itemPosition = 0; itemPosition < userTask.length; itemPosition++)
+    {
+        const task = userTask[itemPosition];
+        const taskcardDisplay = displayTasks(task, itemPosition);
+        taskCardContainer.appendChild(taskcardDisplay);
+    }
+
+} 
+
+const displayTasks = (card, index) => {
+
+    // Creating an element for the card details
+    const taskCard = document.createElement('div');
+    taskCard.setAttribute('class', 'taskCard');
+    taskCard.style.borderColor = getBorderColorByCategory(card.category);
+
+    taskCard.addEventListener('mouseover', () => {
+        taskCard.style.boxShadow = '5px 7px #000';
     });
+    taskCard.addEventListener('mouseout', () => {
+        taskCard.style.boxShadow = 'none';
+    });
+
+    //creating a div tag that contain the category and the complete icon
+    const taskHead = document.createElement('div')
+    taskHead.setAttribute('class', 'taskcardHeader');
+
+    const categoryTag = document.createElement('p')
+    categoryTag.setAttribute('id', 'taskcardCategoryName');
+    taskHead.appendChild(categoryTag);
+    categoryTag.textContent = card.category.toUpperCase(); // display task category from form field
+    categoryTag.style.color = getBorderColorByCategory(card.category);
+
+    const completeIcon = document.createElement('i')
+    completeIcon.setAttribute('class', 'fa-regular fa-circle');
+    completeIcon.setAttribute('id', 'completeTask');
+    taskHead.appendChild(completeIcon);
+
+    completeIcon.addEventListener("click", function() {
+        if (completeIcon.classList.contains("fa-circle")) {
+            // Mark the task as complete
+            completeIcon.classList.remove("fa-circle");
+            completeIcon.classList.add("fa-circle-check");
+            taskCard.style.borderColor = "green";
+            taskCard.style.boxShadow = "0 0 10px green"; // Add box shadow style
+        } else {
+            // Unselect the task
+            completeIcon.classList.remove("fa-circle-check");
+            completeIcon.classList.add("fa-circle");
+            taskCard.style.borderColor = getBorderColorByCategory(card.category); // Reset border color
+            taskCard.style.boxShadow = "none"; // Remove box shadow
+        }
+    });
+
+    taskCard.appendChild(taskHead); // append task head to taskcard
+
+    const horizontalLine = document.createElement('hr');
+
+    taskCard.appendChild(horizontalLine); // append horizontal rule to taskcard
+
+    // Creating a task card body
+    const taskcardBody = document.createElement('div');
+    taskcardBody.setAttribute('class', 'taskcardBody');
+
+    const nameofTask = document.createElement('h3');
+    nameofTask.setAttribute('id', 'taskName');
+    taskcardBody.appendChild(nameofTask);
+    nameofTask.textContent = card.taskName; // display task name from form field
+
+    const taskDescription = document.createElement('p');
+    taskDescription.setAttribute('id', 'taskDescription');
+    taskcardBody.appendChild(taskDescription);
+    taskDescription.textContent = card.description; // display task description from form field
+
+    taskCard.appendChild(taskcardBody); // append task body to taskcard
+
+    //Creating a div element for task time
+    const taskTimeDiv = document.createElement('div');
+    taskTimeDiv.setAttribute('class', 'taskcardTime');
+
+    const timeIcon = document.createElement('i');
+    timeIcon.setAttribute('class', 'fa-regular fa-clock fa-lg');
+    taskTimeDiv.appendChild(timeIcon);
+
+    const taskcardTime = document.createElement('span');
+    taskcardTime.setAttribute('id', 'taskcardTime');
+    taskTimeDiv.appendChild(taskcardTime);
+    taskcardTime.textContent = card.dueTime; // display time from form field
+
+    taskCard.appendChild(taskTimeDiv); // append task time to taskcard
+
+    //Creating a div element for task date
+    const taskDateDiv = document.createElement('div');
+    taskDateDiv.setAttribute('class', 'taskcardDate');
+
+    const dateIcon = document.createElement('i');
+    dateIcon.setAttribute('class', 'fa-regular fa-calendar-days fa-lg');
+    taskDateDiv.appendChild(dateIcon);
+
+    const taskcardDate = document.createElement('span');
+    taskcardDate.setAttribute('id', 'taskcardTime');
+    taskDateDiv.appendChild(taskcardDate);
+    taskcardDate.textContent = card.dueDate; // display date from form field
+
+    taskCard.appendChild(taskDateDiv); //append task date to taskcard
+
+    // Creating a div element for the control buttons
+    const taskcardControl = document.createElement('div');
+    taskcardControl.setAttribute('id', 'taskcardControl');
+
+    //Edit task
+    const editTask = document.createElement('a');
+    editTask.setAttribute('class', 'taskcardEdit');
+
+    editTask.innerHTML = `<i class="fa-regular fa-edit fa-lg"></i> Edit task`;
+
+    taskcardControl.appendChild(editTask);
+
+    editTask.addEventListener('click', function() {
+        console.log('you edit', card.taskName);
+        updateTask(userTask[index]);
+        currentPosition = index;
+        
+    });
+
+    //Delete Task 
+    const deleteTask = document.createElement('a');
+    deleteTask.setAttribute('class', 'taskcardDelete');
+
+    deleteTask.innerHTML = `<i class="fa-regular fa-circle-xmark fa-lg"></i> Delete task`;
+
+    taskcardControl.appendChild(deleteTask);
+
+    deleteTask.addEventListener('click', function () {
+        if (confirm("Are you sure you want to delete this task?")) {
+            userTasks.splice(index, 1);
+            updateLocalStorage(userTasks, username)
+            addTaskToContainer(userTasks);
+        }
+    })
+
+    taskCard.appendChild(taskcardControl); //append task control to taskcard
+
+    return taskCard;
 }
 
-function updateLocalStorage() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+function updateLocalStorage(userTasks, username) {
+    // Create a user-specific local storage key
+    const userTasksKey = `tasks_${username}`;
+
+    // Store the tasks for the current user
+    localStorage.setItem(userTasksKey, JSON.stringify(userTasks));
 }
 
-// Function to filter tasks based on category, priority, or completion status.
+// Function to retrieve tasks for the logged-in user
+function getUserTasks(username) {
+    // Create a user-specific local storage key
+    const userTasksKey = `tasks_${username}`;
+
+    // Retrieve the user's tasks from local storage
+    return JSON.parse(localStorage.getItem(userTasksKey)) || [];
+}
+
+
+document.getElementById('taskCategory').addEventListener('change', filterTasks);
+
+//Function to filter tasks based on category, priority, or completion status.
 function filterTasks() {
-    const categoryFilter = document.getElementById('category-filter').value;
-    const priorityFilter = document.getElementById('priority-filter').value;
-    const completedFilter = document.getElementById('completed-filter').checked;
+    const categoryFilter = document.querySelector('#taskCategory').value;
 
-    const filteredTasks = tasks.filter(task => {
+    const filteredTasks = userTask.filter(task => {
         return (
-            (categoryFilter === 'all' || task.category === categoryFilter) &&
-            (priorityFilter === 'all' || task.priority === priorityFilter) &&
-            (!completedFilter || task.completed === completedFilter)
+            (categoryFilter === 'all' || task.category === categoryFilter)
         );
     });
 
-    displayTasks(filteredTasks);
+    addTaskToContainer(filteredTasks);
 }
 
-// Function to set reminders or notifications (simplified; a real implementation may require a server or external service).
-function setReminder(index) {
-    const task = tasks[index];
-    const dueDate = new Date(task.dueDate);
-    const currentDate = new Date();
-
-    if (dueDate > currentDate) {
-        const timeUntilDue = dueDate - currentDate;
-        // In a real application, you would implement notifications or reminders here.
-        alert(`Reminder: "${task.text}" is due in ${Math.floor(timeUntilDue / (1000 * 60))} minutes.`);
-    } else {
-        alert(`"${task.text}" is already overdue!`);
+// Function to get the border color based on the task category
+function getBorderColorByCategory(category) {
+    switch (category) {
+        case "work":
+            return "orangered";
+        case "study":
+            return "yellow";
+        case "personal":
+            return "blue";
+        case "meeting":
+            return "purple";
+        case "event":
+            return "brown";
+        default:
+            return "black";
     }
 }
 
-// Event listeners
-document.getElementById('add-task').addEventListener('click', addTask);
-document.getElementById('category-filter').addEventListener('change', filterTasks);
-document.getElementById('priority-filter').addEventListener('change', filterTasks);
-document.getElementById('completed-filter').addEventListener('change', filterTasks);
-document.getElementById('category').addEventListener('change', filterTasks);
-document.getElementById('priority').addEventListener('change', filterTasks);
+const userTasks = getUserTasks(username);
 
-displayTasks();
+addTaskToContainer(userTasks);

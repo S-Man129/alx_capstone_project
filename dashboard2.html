@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main2.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Dashboard - TaskSwift</title>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fa-solid fa-boxes-stacked"></i> TaskSwift</h1>
+    <div class="notification">
+      <i class="fa-regular fa-bell fa-lg"></i>
+    </div>
+    <div class="user">
+      <p class="username">Hi, <span id="username">Username</span> </p>
+      <a href="auth.html" id="logout" onclick="logout()">Logout</a>
+    </div>
+  </header>
+
+
+  <div class="row">
+
+    <!-- Side Nav -->
+    <div class="leftcolumn">
+      <div class="sidenav">
+          <h2>Menu</h2>
+          <ul>
+              <li><a class="active" href="#dashboard"> <i class="fa fa-tachometer"></i> <span class="menu">Dashboard</span></a></li>
+              <li><a href="#tasks"> <i class="fa fa-tasks"></i> <span class="menu">Tasks</span></a></li>
+              <li class="createtask" id="addTask2">
+                <a><i class="fa fa-plus"></i> <span class="menu">Create Task</span> </a>
+              </li>
+              <li><a href="#messages"> <i class="fa fa-message"></i> <span class="menu">Messages</span></a></li>
+              <li><a href="#profile"> <i class="fa fa-user"></i> <span class="menu">Profile</span></a></li>
+          </ul>
+      </div>
+    </div>
+    <!-- End of side nav -->
+  
+
+    <div class="rightcolumn">
+
+      <div class="card">
+        <h2>DASHBOARD</h2>
+        <div class="select">
+          <label for="category"> Filter by: </label>
+          <select id="taskCategory" name="category">
+            <option value="all" selected>All Task</option>
+            <option value="work">Work</option>
+            <option value="study">Study</option>
+            <option value="personal">Personal</option>
+            <option value="meeting">Meeting</option>
+            <option value="event">Event</option>
+          </select>
+        </div>
+        <button class="add-task" id="addTask1">
+          <i class="fa fa-plus"></i> Create task
+        </button>
+      </div>
+
+      <!-- Add Task Modal -->
+      <div id="addTaskModal" class="modal">
+        <span class="close">&times;</span>
+        <form action="" class="form">
+            <h2>New Task</h2>
+            <input type="text" id="fieldTaskName" placeholder="Task name">
+            <input type="date" id="fieldTaskDate" placeholder="Date">
+            <input type="time" id="fieldTaskTime" placeholder="time">
+            <select id="taskCategoryForm" name="category">
+                <option value=" " disabled selected>Select task category</option>
+                <option value="work">Work</option>
+                <option value="study">Study</option>
+                <option value="personal">Personal</option>
+                <option value="meeting">Meeting</option>
+                <option value="event">Event</option>
+            </select>
+            <textarea name="description" id="fieldTaskDescription" placeholder="Task description ..."></textarea>
+            <button id="addTaskButton" type="button">Add Task</button>
+        </form>
+      </div>
+      <!-- end of modal -->
+
+      <!-- task cards -->
+      <div class="taskCardContainer">
+
+        <!-- <div class="taskCard">
+          <div class="taskcardHeader">
+              <p id="taskcardCategoryName">Event</p>
+              <i class="fa-regular fa-circle" id="completeTask"></i>
+          </div>
+          <hr>
+          <div class="taskcardBody">
+              <h3 id="taskName">ALX Web Application</h3>
+              <p id="taskDescription">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam magnam aut ducimus voluptatibus nesciunt quasi ipsum totam quis id sit, laborum cupiditate porro ad, laboriosam ab aspernatur. Nisi, harum exercitationem?</p>
+          </div>
+          <div id="taskcardDateTime">
+              <div class="taskcardTime">
+                  <i class="fa-regular fa-clock fa-lg"></i>
+                  <span id="taskcardDate">10:11pm</span>
+              </div>
+              <div class="taskcardDate">
+                  <i class="fa-regular fa-calendar fa-lg"></i> 
+                  <span id="taskcardDate">12/03/2023</span>
+              </div>
+          </div>
+          <div id="taskcardControl">
+              <div class="taskcardEdit">
+                  <a id="editTask"><i class="fa-regular fa-edit fa-lg"></i> Edit task</a>
+              </div>
+              <div class="taskcardDelete">
+                  <a id="removeTask"><i class="fa-regular fa-circle-xmark fa-lg"></i> Delete task</a>
+              </div>
+          </div>
+        </div> -->
+
+      </div>
+      <!-- End of Task Card -->
+    </div>
+  </div>
+
+  <script src="js/app.js" type="module"></script>
+  
+</body>
+</html>
+
+

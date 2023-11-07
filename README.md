@@ -72,8 +72,8 @@ SQLite: A lightweight and easy-to-setup relational database, suitable for smalle
 ## CONTACT INFORMATION
 **Name: Sulayman Adebayo
 Contact: +2347057761403
-LinkedIn:
-Github
+LinkedIn: 
+Github: 
 Twitter:**
 
 ## WORKFLOW
