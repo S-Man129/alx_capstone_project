@@ -59,6 +59,7 @@ These features make the app efficient, adaptable, and ideal for both personal an
 HTML, CSS, JavaScript (ES6+)
 
 ## DEMO
+https://youtu.be/BIorubyhm1s?si=FMznogOdFh8-QyVo
 
 ## ROADMAP AND FUTURE ENHANCEMENTS:
 

@@ -110,7 +110,7 @@ const displayTasks = (card, index) => {
     const categoryTag = document.createElement('p')
     categoryTag.setAttribute('id', 'taskcardCategoryName');
     taskHead.appendChild(categoryTag);
-    categoryTag.textContent = card.category.toUpperCase(); // display task category from form field
+    categoryTag.textContent = card.category.toUpperCase();
     categoryTag.style.color = getBorderColorByCategory(card.category);
 
     const completeIcon = document.createElement('i')
@@ -138,7 +138,7 @@ const displayTasks = (card, index) => {
     taskCard.appendChild(taskHead); 
 
     const horizontalLine = document.createElement('hr');
-    taskCard.appendChild(horizontalLine); // append horizontal rule to taskcard
+    taskCard.appendChild(horizontalLine); 
 
     // Creating a task card body
     const taskcardBody = document.createElement('div');
@@ -167,9 +167,9 @@ const displayTasks = (card, index) => {
     const taskcardTime = document.createElement('span');
     taskcardTime.setAttribute('id', 'taskcardTime');
     taskTimeDiv.appendChild(taskcardTime);
-    taskcardTime.textContent = card.dueTime; // display time from form field
+    taskcardTime.textContent = card.dueTime;
 
-    taskCard.appendChild(taskTimeDiv); // append task time to taskcard
+    taskCard.appendChild(taskTimeDiv);
 
     //Creating a div element for task date
     const taskDateDiv = document.createElement('div');
@@ -182,9 +182,9 @@ const displayTasks = (card, index) => {
     const taskcardDate = document.createElement('span');
     taskcardDate.setAttribute('id', 'taskcardTime');
     taskDateDiv.appendChild(taskcardDate);
-    taskcardDate.textContent = card.dueDate; // display date from form field
+    taskcardDate.textContent = card.dueDate; 
 
-    taskCard.appendChild(taskDateDiv); //append task date to taskcard
+    taskCard.appendChild(taskDateDiv); 
 
     // Creating a div element for the control buttons
     const taskcardControl = document.createElement('div');
@@ -221,8 +221,7 @@ const displayTasks = (card, index) => {
         }
     })
 
-    taskCard.appendChild(taskcardControl); //append task control to taskcard
-
+    taskCard.appendChild(taskcardControl);
     return taskCard;
 }
 
@@ -246,7 +245,6 @@ function getUserTasks(username) {
 
 document.getElementById('taskCategory').addEventListener('change', filterTasks);
 
-//Function to filter tasks based on category, priority, or completion status.
 function filterTasks() {
     const categoryFilter = document.querySelector('#taskCategory').value;
 
