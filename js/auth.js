@@ -25,6 +25,11 @@ function clearRegistrationForm() {
     document.getElementById("registerMessage").innerText = "";
 }
 
+const projectName = document.querySelector('h1');
+projectName.addEventListener('click', function() {
+    window.location.replace("index.html");
+});
+
 function login() {
     const username = document.getElementById("loginUsername").value.trim();
     const password = document.getElementById("loginPassword").value;

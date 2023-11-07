@@ -27,7 +27,7 @@ createTaskBtn.onclick = function() {
     const taskformHead = document.querySelector('.form h2');
     taskformHead.innerText = 'Create new task';
     modal.style.display = "block";
-    addTaskBtn.innerText = 'Add Task'
+    addTaskBtn.innerText = 'Add Task';
 }
 
 const createTaskBtn2 = document.querySelector('#addTask2');
@@ -36,7 +36,7 @@ createTaskBtn2.onclick = function() {
     const taskformHead = document.querySelector('.form h2');
     taskformHead.innerText = 'Create new task';
     modal.style.display = "block";
-    addTaskBtn.innerText = 'Add Task'
+    addTaskBtn.innerText = 'Add Task';
 }
 
 // close form 
