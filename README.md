@@ -5,8 +5,8 @@ The Capstone Project is the culmination of my journey in the “Intro to Softwar
 The purpose of the Capstone Project is to provide me with a real-world development experience, simulating the challenges and complexities that software developers often face in their professional careers. Throughout this project, I will showcase my problem-solving abilities, project management skills, and creativity in designing and implementing a fully functional web application.
 
 ## PROJECT OVERVIEW
-# Task Manager Application
-The "Task Manager App" is a software application designed to help users efficiently manage and organize their tasks and to-do lists. Its primary purpose is to streamline task management, improve productivity, and reduce the stress associated with keeping track of various tasks and responsibilities.
+# TaskSwift
+The "TaskSwift" is a software application designed to help users efficiently manage and organize their tasks and to-do lists. Its primary purpose is to streamline task management, improve productivity, and reduce the stress associated with keeping track of various tasks and responsibilities.
 
 Key goals and features of the Task Manager App include:
 
